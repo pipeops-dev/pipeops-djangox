@@ -13,15 +13,19 @@ WORKDIR /code
 COPY requirements.txt /tmp/requirements.txt
 
 RUN set -ex && \
-    pip install --upgrade pip && \
-    pip install -r /tmp/requirements.txt && \
-    rm -rf /root/.cache/
+pip install --upgrade pip && \
+pip install -r /tmp/requirements.txt && \
+rm -rf /root/.cache/
 
 # Copy local project
 COPY . /code/
 
-# Expose port 8000
-EXPOSE 8000
+# Set the port number as an environment variable
+ARG PORT=8000
+ENV PORT $PORT
 
-# Use gunicorn on port 8000
-CMD ["gunicorn", "--bind", ":8000", "--workers", "2", "django_project.wsgi"]
+# Expose the given port
+EXPOSE $PORT
+
+# Use gunicorn on the given port
+CMD gunicorn --bind :$PORT --workers 2 django_project.wsgi
