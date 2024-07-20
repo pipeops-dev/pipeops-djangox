@@ -21,7 +21,7 @@ rm -rf /root/.cache/
 COPY . /code/
 
 # Set the port number as an environment variable
-ARG PORT=8000
+ARG PORT
 ENV PORT $PORT
 
 # Expose the given port
