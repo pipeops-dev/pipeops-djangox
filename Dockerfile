@@ -12,6 +12,17 @@ RUN groupadd -r django && useradd -r -g django django
 RUN mkdir -p /code && chown django:django /code
 WORKDIR /code
 
+# Install system dependencies and build tools
+RUN set -ex && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+    gcc \
+    libffi-dev \
+    python3-dev \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 # Install dependencies
 COPY requirements.txt /tmp/requirements.txt
 
