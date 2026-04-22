@@ -6,7 +6,7 @@ https://github.com/wsvincent/djangox/assets/766418/a73ea730-a7b4-4e53-bf51-aa68f
 
 ## 🚀 Features
 
-- Django 5.0 & Python 3.12
+- Django 5.1 & Python 3.12
 - Install via [Pip](https://pypi.org/project/pip/) or [Docker](https://www.docker.com/)
 - User log in/out, sign up, password reset via [django-allauth](https://github.com/pennersr/django-allauth)
 - Static files configured with [Whitenoise](http://whitenoise.evans.io/en/stable/index.html)
@@ -93,8 +93,8 @@ $ docker-compose exec web python manage.py createsuperuser
 
 ## Next Steps
 
-- Add environment variables. There are multiple packages but I personally prefer [environs](https://pypi.org/project/environs/).
-- Add [gunicorn](https://pypi.org/project/gunicorn/) as the production web server.
+- Add [gunicorn](https://pypi.org/project/gunicorn/) as the production web server (included in Docker).
+- Zero-config deployment: Hardcoded `SECRET_KEY` and `sqlite3` defaults for immediate preview.
 - Update the [EMAIL_BACKEND](https://docs.djangoproject.com/en/4.0/topics/email/#module-django.core.mail) and connect with a mail provider.
 - Make the [admin more secure](https://opensource.com/article/18/1/10-tips-making-django-admin-more-secure).
 - `django-allauth` supports [social authentication](https://django-allauth.readthedocs.io/en/latest/providers.html) if you need that.
